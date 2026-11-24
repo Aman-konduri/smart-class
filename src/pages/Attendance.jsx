@@ -156,7 +156,7 @@ export default function Attendance() {
             type="button"
             onClick={handleExport}
             disabled={filteredRows.length === 0}
-            className="btn-primary"
+            className="btn-primary min-h-[44px] w-full sm:w-auto md:min-h-0"
           >
             <Download className="h-4 w-4" />
             Export CSV
@@ -165,7 +165,7 @@ export default function Attendance() {
       </div>
 
       {/* Light-touch Summary KPI Cards */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard
           enableTilt={false}
           title="Filtered Records"

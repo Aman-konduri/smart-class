@@ -58,7 +58,7 @@ export default function Control() {
           aria-checked={autoMode}
           aria-label="Toggle Smart Eco Auto-Off Mode"
           onClick={toggleAutoMode}
-          className={`relative inline-flex h-8 w-14 shrink-0 cursor-pointer items-center rounded-full p-0.5 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
+          className={`relative inline-flex h-8 w-14 shrink-0 cursor-pointer items-center rounded-full p-0.5 transition-colors active:scale-95 after:absolute after:-inset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] md:after:hidden ${
             autoMode ? 'bg-[#30d158]' : 'bg-[var(--surface-subtle)]'
           }`}
         >
@@ -87,7 +87,7 @@ export default function Control() {
               <button
                 type="button"
                 onClick={() => setAllLights(true)}
-                className="btn-primary px-4 py-2 text-xs"
+                className="btn-primary min-h-[44px] px-4 py-2 text-xs md:min-h-0"
               >
                 <Power className="h-3.5 w-3.5" />
                 All Lights ON
@@ -97,7 +97,7 @@ export default function Control() {
               <button
                 type="button"
                 onClick={() => setAllLights(false)}
-                className="btn-secondary px-4 py-2 text-xs"
+                className="btn-secondary min-h-[44px] px-4 py-2 text-xs md:min-h-0"
               >
                 All Lights OFF
               </button>
@@ -132,7 +132,7 @@ export default function Control() {
               <button
                 type="button"
                 onClick={() => setAllFans(true)}
-                className="btn-primary px-4 py-2 text-xs"
+                className="btn-primary min-h-[44px] px-4 py-2 text-xs md:min-h-0"
               >
                 <Power className="h-3.5 w-3.5" />
                 All Fans ON
@@ -142,7 +142,7 @@ export default function Control() {
               <button
                 type="button"
                 onClick={() => setAllFans(false)}
-                className="btn-secondary px-4 py-2 text-xs"
+                className="btn-secondary min-h-[44px] px-4 py-2 text-xs md:min-h-0"
               >
                 All Fans OFF
               </button>

@@ -144,3 +144,72 @@
 .recharts-tooltip-wrapper {
   transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms ease !important;
 }
+
+/* ============================================================================
+   MOBILE-ONLY OVERRIDES (Screens <= 768px and <= 480px)
+   Desktop layout (1024px+) and colours/fonts remain completely untouched.
+   ============================================================================ */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  /* Scale headings with clamp() so they never overflow on narrow screens */
+  .hero-headline {
+    font-size: clamp(2rem, 8.5vw, 3.25rem);
+    line-height: 1.08;
+  }
+
+  h1:not(.hero-headline) {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(1.125rem, 4.5vw, 1.5rem);
+    line-height: 1.25;
+  }
+
+  /* Prevent iOS Safari auto-zoom on form focus (must be >= 16px) */
+  input,
+  select,
+  textarea,
+  .input-field {
+    font-size: 16px !important;
+  }
+
+  /* Touch-friendly range sliders (Control page fan speed) */
+  input[type='range'] {
+    height: 12px;
+    border-radius: 9999px;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  }
+
+  input[type='range']::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    border-radius: 1.25rem;
+  }
+}

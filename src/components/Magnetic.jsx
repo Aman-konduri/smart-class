@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { MOTION_TUNING } from '../utils/motionConfig';
 
@@ -6,6 +6,7 @@ import { MOTION_TUNING } from '../utils/motionConfig';
  * Magnetic Wrapper Component
  * Gently pulls child buttons or sidebar icons toward the mouse cursor
  * whenever the pointer comes within ~60px of the element's center.
+ * Disabled automatically on touch devices.
  */
 export default function Magnetic({
   children,
@@ -16,10 +17,22 @@ export default function Magnetic({
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(
+      window.matchMedia('(pointer: coarse)').matches ||
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0
+    );
+  }, []);
+
+  if (isTouch || reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const handleMouseMove = (e) => {
-    if (reducedMotion || !ref.current) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;

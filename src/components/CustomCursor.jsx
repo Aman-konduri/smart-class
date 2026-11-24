@@ -16,7 +16,10 @@ export default function CustomCursor() {
   const [cursorLabel, setCursorLabel] = useState('');
 
   useEffect(() => {
-    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    const isCoarsePointer =
+      window.matchMedia('(pointer: coarse)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0;
     if (isCoarsePointer || reducedMotion) {
       setEnabled(false);
       return;

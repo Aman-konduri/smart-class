@@ -253,7 +253,7 @@ export default function Settings() {
                   <button
                     type="button"
                     onClick={() => setTheme('dark')}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl border py-2.5 text-xs font-semibold transition ${
+                    className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl border py-2.5 text-xs font-semibold transition md:min-h-0 ${
                       theme === 'dark'
                         ? 'border-sky-500 bg-sky-500/15 text-sky-400'
                         : 'border-slate-200 dark:border-slate-800'
@@ -265,7 +265,7 @@ export default function Settings() {
                   <button
                     type="button"
                     onClick={() => setTheme('light')}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl border py-2.5 text-xs font-semibold transition ${
+                    className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl border py-2.5 text-xs font-semibold transition md:min-h-0 ${
                       theme === 'light'
                         ? 'border-sky-500 bg-sky-500/15 text-sky-600'
                         : 'border-slate-200 dark:border-slate-800'
@@ -287,21 +287,28 @@ export default function Settings() {
               setSensorError('Simulated MQTT broker timeout on ws://campus-iot.local:8883');
               addToast('Simulated gateway error on Home page', 'error');
             }}
-            className="btn-secondary text-xs"
+            className="btn-secondary min-h-[44px] w-full text-xs sm:w-auto md:min-h-0"
           >
             <Bug className="h-3.5 w-3.5" />
             Test Home Error State
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
             <Magnetic>
-              <button type="button" onClick={handleReset} className="btn-secondary">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="btn-secondary min-h-[44px] w-full sm:w-auto md:min-h-0"
+              >
                 <RotateCcw className="h-4 w-4" />
                 Reset Defaults
               </button>
             </Magnetic>
             <Magnetic>
-              <button type="submit" className="btn-primary">
+              <button
+                type="submit"
+                className="btn-primary min-h-[44px] w-full sm:w-auto md:min-h-0"
+              >
                 <Save className="h-4 w-4" />
                 Save Settings
               </button>

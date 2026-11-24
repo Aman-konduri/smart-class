@@ -13,7 +13,7 @@ export function CustomChartTooltip({ active, payload, label, unit = '' }) {
       initial={{ opacity: 0, scale: 0.96, y: 4 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.14 }}
-      className="rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 px-3.5 py-2.5 text-xs shadow-xl backdrop-blur-md"
+      className="rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 px-4 py-3 text-sm shadow-xl backdrop-blur-md md:px-3.5 md:py-2.5 md:text-xs"
     >
       {label && (
         <p className="mb-1.5 font-mono text-[11px] font-medium text-[var(--muted)]">

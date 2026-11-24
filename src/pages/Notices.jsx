@@ -75,7 +75,7 @@ export default function Notices() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
           <label htmlFor="priority-filter" className="sr-only">
             Filter by priority
           </label>
@@ -83,7 +83,7 @@ export default function Notices() {
             id="priority-filter"
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="input-field w-auto py-2"
+            className="input-field min-h-[44px] w-full py-2 sm:w-auto md:min-h-0"
           >
             <option value="ALL">All Priorities</option>
             <option value="High">High Priority</option>
@@ -92,7 +92,11 @@ export default function Notices() {
           </select>
 
           <Magnetic>
-            <button type="button" onClick={openCreateModal} className="btn-primary shrink-0">
+            <button
+              type="button"
+              onClick={openCreateModal}
+              className="btn-primary min-h-[44px] w-full shrink-0 sm:w-auto md:min-h-0"
+            >
               <Plus className="h-4 w-4" />
               New Notice
             </button>
@@ -155,12 +159,12 @@ export default function Notices() {
                 </p>
               </div>
 
-              <div className="mt-5 flex items-center justify-end gap-2 border-t border-slate-200/70 pt-3 dark:border-slate-800/80">
+              <div className="mt-5 flex flex-wrap items-center justify-end gap-2 border-t border-slate-200/70 pt-3 dark:border-slate-800/80">
                 <button
                   type="button"
                   onClick={() => togglePinNotice(notice.id)}
                   aria-label={notice.pinned ? 'Unpin notice' : 'Pin notice'}
-                  className="btn-secondary px-3 py-1.5 text-xs"
+                  className="btn-secondary min-h-[44px] px-3.5 py-1.5 text-xs md:min-h-0 md:px-3"
                 >
                   <Pin className="h-3.5 w-3.5" />
                   {notice.pinned ? 'Unpin' : 'Pin'}
@@ -169,7 +173,7 @@ export default function Notices() {
                   type="button"
                   onClick={() => openEditModal(notice)}
                   aria-label={`Edit ${notice.title}`}
-                  className="btn-secondary px-3 py-1.5 text-xs"
+                  className="btn-secondary min-h-[44px] px-3.5 py-1.5 text-xs md:min-h-0 md:px-3"
                 >
                   <Pencil className="h-3.5 w-3.5" />
                   Edit
@@ -178,7 +182,7 @@ export default function Notices() {
                   type="button"
                   onClick={() => deleteNotice(notice.id)}
                   aria-label={`Delete ${notice.title}`}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/25 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-600 hover:bg-rose-500/20 dark:text-rose-300"
+                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-rose-500/25 bg-rose-500/10 px-3.5 py-1.5 text-xs font-semibold text-rose-600 hover:bg-rose-500/20 dark:text-rose-300 md:min-h-0 md:px-3"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                   Delete

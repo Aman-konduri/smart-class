@@ -77,7 +77,7 @@ export default function Home() {
   const gridColor = theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(29,29,31,0.08)';
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-10 md:space-y-16">
       {/* Apple-Style Centered Hero with Huge Typography & Product Visual Stage */}
       <section className="pt-4 text-center sm:pt-8">
         <motion.div
@@ -101,13 +101,13 @@ export default function Home() {
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Magnetic>
-              <Link to="/control" className="btn-primary">
+              <Link to="/control" className="btn-primary min-h-[44px] md:min-h-0">
                 Open Room Controls
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Magnetic>
             <Magnetic>
-              <Link to="/attendance" className="btn-secondary">
+              <Link to="/attendance" className="btn-secondary min-h-[44px] md:min-h-0">
                 Attendance Log
               </Link>
             </Magnetic>
@@ -134,7 +134,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setHeroMode('3d')}
-                  className={`rounded-full px-3.5 py-1 text-xs font-medium transition ${
+                  className={`min-h-[44px] rounded-full px-4 py-1 text-xs font-medium transition md:min-h-0 md:px-3.5 ${
                     heroMode === '3d'
                       ? 'bg-[#2997ff] text-white'
                       : 'text-[#a1a1a6] hover:text-white'
@@ -145,7 +145,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setHeroMode('studio')}
-                  className={`rounded-full px-3.5 py-1 text-xs font-medium transition ${
+                  className={`min-h-[44px] rounded-full px-4 py-1 text-xs font-medium transition md:min-h-0 md:px-3.5 ${
                     heroMode === 'studio'
                       ? 'bg-[#2997ff] text-white'
                       : 'text-[#a1a1a6] hover:text-white'
@@ -203,7 +203,7 @@ export default function Home() {
         {isLoadingRoom ? (
           <SkeletonGrid count={8} />
         ) : (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-4">
             <StatCard
               index={0}
               enableTilt
@@ -334,7 +334,7 @@ export default function Home() {
             title="Live Temperature & Power Trend"
             subtitle="Real-time sensor telemetry (°C vs kWh)"
           >
-            <div className="h-64 w-full">
+            <div className="h-52 w-full md:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={liveTrend} margin={{ top: 10, right: 12, left: -16, bottom: 0 }}>
                   <defs>

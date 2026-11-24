@@ -61,7 +61,7 @@ export default function Energy() {
               type="button"
               onClick={() => setPeriod(p.id)}
               aria-pressed={period === p.id}
-              className={`rounded-lg px-4 py-1.5 text-xs font-semibold transition ${
+              className={`min-h-[44px] rounded-lg px-4 py-1.5 text-xs font-semibold transition md:min-h-0 ${
                 period === p.id
                   ? 'bg-gradient-to-r from-electric-600 to-tealaccent-500 text-white shadow'
                   : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
@@ -74,7 +74,7 @@ export default function Energy() {
       </div>
 
       {/* Summary KPI Cards */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
         <StatCard
           enableTilt={false}
           title={`Total Usage (${period.toUpperCase()})`}
@@ -91,19 +91,21 @@ export default function Energy() {
           accent="teal"
           subtitle="Calculated at institutional tariff ₹8.50/kWh"
         />
-        <StatCard
-          enableTilt={false}
-          title="Savings vs Prior Period"
-          value={`-${activeData.summary.savingsPercent}%`}
-          icon={TrendingDown}
-          accent="emerald"
-          badge={{
-            label: 'Eco Gain',
-            className:
-              'bg-emerald-500/15 text-emerald-600 border-emerald-500/30 dark:text-emerald-300',
-          }}
-          subtitle="Saved via Smart Occupancy Auto-Off"
-        />
+        <div className="col-span-2 md:col-span-1">
+          <StatCard
+            enableTilt={false}
+            title="Savings vs Prior Period"
+            value={`-${activeData.summary.savingsPercent}%`}
+            icon={TrendingDown}
+            accent="emerald"
+            badge={{
+              label: 'Eco Gain',
+              className:
+                'bg-emerald-500/15 text-emerald-600 border-emerald-500/30 dark:text-emerald-300',
+            }}
+            subtitle="Saved via Smart Occupancy Auto-Off"
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -112,7 +114,7 @@ export default function Energy() {
             title="Hourly Load Curve (kWh)"
             subtitle="Peak lecture hours vs afternoon taper"
           >
-            <div className="h-72 w-full">
+            <div className="h-52 w-full md:h-72">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={activeData.hourly} margin={{ top: 10, right: 16, left: -12, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
@@ -140,7 +142,7 @@ export default function Energy() {
             title="Load Split by Category"
             subtitle="Lights vs Ceiling Fans vs Others (%)"
           >
-            <div className="h-72 w-full">
+            <div className="h-56 w-full md:h-72">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -170,7 +172,7 @@ export default function Energy() {
         title="Smart Eco Usage vs Manual Baseline (kWh)"
         subtitle="Comparison showing electricity saved by automated classroom controls"
       >
-        <div className="h-72 w-full">
+        <div className="h-52 w-full md:h-72">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={activeData.comparison} margin={{ top: 10, right: 16, left: -12, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />

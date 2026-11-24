@@ -76,6 +76,15 @@ export default function StatCard({
   const reducedMotion = useReducedMotion();
   const cardRef = useRef(null);
   const [glare, setGlare] = useState({ x: 50, y: 50, active: false });
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(
+      window.matchMedia('(hover: none), (pointer: coarse)').matches ||
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0
+    );
+  }, []);
 
   // Single Apple accent + Apple status colours
   const iconToneMap = {
@@ -116,12 +125,12 @@ export default function StatCard({
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-24px' }}
-      whileHover={reducedMotion ? undefined : { y: -4, scale: 1.01 }}
+      whileHover={reducedMotion || isTouch ? undefined : { y: -4, scale: 1.01 }}
       transition={{ ...APPLE_SPRING, delay: Math.min(index * 0.04, 0.24) }}
-      className="glass-card relative overflow-hidden p-6 hover:shadow-apple-hover"
+      className="glass-card relative overflow-hidden p-4 hover:shadow-apple-hover sm:p-6"
     >
-      {/* Subtle Apple-like specular sheen on Home cards */}
-      {enableTilt && (
+      {/* Subtle Apple-like specular sheen on Home cards (desktop hover only) */}
+      {enableTilt && !isTouch && (
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 transition-opacity duration-300"

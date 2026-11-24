@@ -54,7 +54,7 @@ export default function Login() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 py-12 text-[#f5f5f7]">
+    <div className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-black px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(2rem,env(safe-area-inset-top))] text-[#f5f5f7] sm:py-12">
       {/* Subtle Apple-style soft radial halo behind hero only */}
       <div
         aria-hidden="true"
@@ -107,7 +107,7 @@ export default function Login() {
           transition={{ ...APPLE_SPRING, delay: 0.08 }}
           className="lg:col-span-5"
         >
-          <div className="rounded-3xl border border-white/10 bg-[#1c1c1e] p-8 shadow-2xl sm:p-10">
+          <div className="rounded-3xl border border-white/10 bg-[#1c1c1e] p-6 shadow-2xl sm:p-10">
             <div className="flex items-center gap-3.5">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#2997ff] text-white">
                 <Cpu className="h-5 w-5" />

@@ -60,21 +60,21 @@ export default function DeviceToggle({
           </div>
         </div>
 
-        {/* Apple iOS-Style Spring Switch */}
+        {/* Apple iOS-Style Spring Switch (44x44px minimum touch hit area on mobile) */}
         <button
           type="button"
           role="switch"
           aria-checked={device.isOn}
           aria-label={`Toggle ${device.name}`}
           onClick={() => onToggle(device.id)}
-          className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full p-0.5 transition-colors duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
+          className={`relative inline-flex h-8 w-14 shrink-0 cursor-pointer items-center rounded-full p-0.5 transition-colors duration-200 active:scale-95 after:absolute after:-inset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] md:h-7 md:w-12 md:after:hidden ${
             device.isOn ? 'bg-[#30d158]' : 'bg-[var(--surface-subtle)]'
           }`}
         >
           <motion.span
             layout
             transition={{ type: 'spring', stiffness: 450, damping: 28 }}
-            className={`pointer-events-none block h-6 w-6 rounded-full bg-white shadow-sm ${
+            className={`pointer-events-none block h-7 w-7 rounded-full bg-white shadow-sm md:h-6 md:w-6 ${
               device.isOn ? 'ml-auto' : 'mr-auto'
             }`}
           />

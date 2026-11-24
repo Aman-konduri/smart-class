@@ -348,10 +348,18 @@ export default function Scene3D({ className = 'h-72 w-full' }) {
   const [inView, setInView] = useState(true);
   const [tabVisible, setTabVisible] = useState(true);
   const [lowPower, setLowPower] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    const touchDevice =
+      window.matchMedia('(pointer: coarse)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0;
+    setIsTouch(Boolean(touchDevice));
+
     const isSmallOrLowCpu =
       window.innerWidth < 768 ||
+      touchDevice ||
       (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
     setLowPower(Boolean(isSmallOrLowCpu));
 
@@ -404,11 +412,11 @@ export default function Scene3D({ className = 'h-72 w-full' }) {
       <WebGLErrorBoundary>
         <Canvas
           camera={{ position: [0, 0, 4.4], fov: 46 }}
-          dpr={[1, MOTION_TUNING.MAX_DPR]}
+          dpr={[1, isTouch ? 1.5 : MOTION_TUNING.MAX_DPR]}
           frameloop={isPaused ? 'never' : 'always'}
           gl={{ antialias: !lowPower, powerPreference: 'high-performance' }}
         >
-          <ClassroomParticles count={particleCount} />
+          {!isTouch && <ClassroomParticles count={particleCount} />}
           <PhysicsClassroomObjects lowPower={lowPower} />
         </Canvas>
       </WebGLErrorBoundary>

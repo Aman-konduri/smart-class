@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import { AuthProvider } from './hooks/useAuth';
 import { ClassroomProvider } from './hooks/useClassroom';
@@ -38,7 +38,7 @@ export default function App() {
           <ScrollProgressBar />
           <CustomCursor />
 
-          <BrowserRouter>
+          <Router>
             <Routes>
               {/* Public Faculty Login Route */}
               <Route path="/login" element={<Login />} />
@@ -65,7 +65,7 @@ export default function App() {
             </Routes>
 
             <ToastContainer />
-          </BrowserRouter>
+          </Router>
         </ClassroomProvider>
       </AuthProvider>
     </MotionConfig>

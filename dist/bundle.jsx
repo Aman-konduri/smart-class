@@ -1,6 +1,6 @@
 import React, { Component, Suspense, createContext, lazy, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Link, NavLink, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useOutlet } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Link, NavLink, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useOutlet } from 'react-router-dom';
 import { AnimatePresence, MotionConfig, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
@@ -4871,7 +4871,7 @@ function App() {
           <ScrollProgressBar />
           <CustomCursor />
 
-          <BrowserRouter>
+          <Router>
             <Routes>
               {/* Public Faculty Login Route */}
               <Route path="/login" element={<Login />} />
@@ -4898,7 +4898,7 @@ function App() {
             </Routes>
 
             <ToastContainer />
-          </BrowserRouter>
+          </Router>
         </ClassroomProvider>
       </AuthProvider>
     </MotionConfig>

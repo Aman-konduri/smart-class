@@ -49,7 +49,7 @@ ORDERED_FILES = [
 
 HEADER_IMPORTS = """import React, { Component, Suspense, createContext, lazy, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Link, NavLink, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useOutlet } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Link, NavLink, Navigate, Outlet, Route, Routes, useLocation, useNavigate, useOutlet } from 'react-router-dom';
 import { AnimatePresence, MotionConfig, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
@@ -163,13 +163,15 @@ def main():
   <body class="antialiased selection:bg-[#0071e3]/20 dark:selection:bg-[#2997ff]/30">
     <div id="root"></div>
     <script src="https://unpkg.com/@babel/standalone@7.26.2/babel.min.js"></script>
-    <script type="text/babel" data-type="module" data-presets="react" src="/bundle.jsx"></script>
+    <script type="text/babel" data-type="module" data-presets="react" src="./bundle.jsx"></script>
   </body>
 </html>
 """
     with open(os.path.join(DIST, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_html)
-    print("Rebuilt Apple + Lusion dist/index.html and dist/bundle.jsx successfully.")
+    with open(os.path.join(DIST, "404.html"), "w", encoding="utf-8") as f:
+        f.write(index_html)
+    print("Rebuilt Apple + Lusion dist/index.html, dist/404.html, and dist/bundle.jsx successfully.")
 
 if __name__ == "__main__":
     main()
